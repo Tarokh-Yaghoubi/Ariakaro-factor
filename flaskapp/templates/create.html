@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 style="width: 100%"> {% block name %}Add a New Student {% endblock %}</h1>
+    <form action="" method="post">
+        <p>
+            <label for="firstname">Firstname</label>
+            <input type="text" name="firstname" id="firstname" placeholder="Firstname">
+        </p>
+        <p>
+            <label for="lastname">Lastname</label>
+            <input type="text" name="lastname" id="lastname" placeholder="Lastname">
+        </p>
+        <p>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="E-mail">
+        </p>
+        <p>
+            <label for="age">Age</label>
+            <input type="number" name="age" id="age" placeholder="Age">
+        </p>
+        <p>
+            <label for="bio">Bio</label>
+            <br>
+            <textarea name="bio" id="bio" cols="15" rows="60">
+                Type in your bio here ...
+            </textarea>
+        </p>
+        <p>
+            <button type="submit">Submit</button>
+        </p>
+    </form>
+{% endblock %}

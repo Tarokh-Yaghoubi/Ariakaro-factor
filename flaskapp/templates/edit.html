@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+    <h1 style="width: 100%; text-align: center; color: rgb(59, 57, 57); font-family: 'Ubuntu';">
+        {% block title %}
+            Edit insurance
+        {% endblock %}
+    </h1>
+    <body>
+        <form action="" method="post">
+            <p>
+                <label for="taxation">taxation</label>
+                <input type="text" name="taxation" value="{{ factor.taxation }}" id="taxation" placeholder="Taxation">
+            </p>
+            <p>
+                <label for="taxation_c">Taxation_c</label>
+                <input type="text" name="taxation_c" value="{{ factor.taxation_c }}" id="taxation_c" placeholder="Taxation_c">
+            </p>
+            <p>
+                <label for="value_added">Value added</label>
+                <input type="text" name="value_added" value="{{ factor.value_added }}" id="value_added" placeholder="Value Added">
+            </p>
+            <p>
+                <label for="insurance">Insurance</label>
+                <input type="text" name="insurance"  value="{{ factor.insurance }}" id="insurance" placeholder="Insurance">
+            </p>
+            <p>
+                <button type="submit">Confirm</button>
+            </p>
+        </form>
+    </body>
+{% endblock %}

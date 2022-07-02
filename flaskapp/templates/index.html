@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.js') }}">
+    <title>Document</title>
+	{% if a %}
+
+		<script>alert("{{ a }}");</script>
+
+	{% endif %}
+
+	{% if message %}
+
+		<script>alert("{{ message }}");</script>
+
+	{% endif %}
+</head>
+<body>
+
+    <div>
+        <div class="container" id="container">
+            <div class="form-container sign-in-container">
+                <form action="{{ url_for('compute') }}", method="post">
+                    <h1>Computation</h1>
+                        <input type="text" name="salary_price" placeholder="Salary Price" />
+                        <input type="text" name="contract_price" placeholder="Contract Price" />
+                        <input type="text" name="taxation"  placeholder="Taxation" />
+                        <input type="text" name="taxation_c" placeholder="Taxation_C" />
+                        <input type="text" name="value_added" placeholder="value added" />
+                        <input type="text" name="insurance" placeholder="Insurance" />
+                        <br>
+                    <button>Compute</button>
+                </form>
+            </div>
+            <form action="{{ url_for('edit', factor_id=1) }}">
+                <div class="overlay-container">
+                    <div class="overlay">
+                        <div class="overlay-panel overlay-right">
+                            <h1>Settings</h1>
+                            <p>Edit insurance , taxation and value-added here !</p>
+                            <button class="ghost" id="signUp">Edit</button>
+                            <br>
+                            <br><br><br><br>
+                    
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+<footer>
+	<p>
+		AriaKaro Software and ICT Company 
+	</p>
+</footer>
+</body>
+</html>
+{% endblock %}
