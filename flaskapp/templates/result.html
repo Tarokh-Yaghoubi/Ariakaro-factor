@@ -12,10 +12,18 @@
 <div class="container" id="container">
 	<div class="form-container sign-in-container">
 		<form action="{{ url_for('login') }}">
-			<h1 class="computation-done">Computation Done !</h1>
-                <h4>Final Price : {{ finale_price }}</h4>
-				<h4>Factor Price : {{ factor_price }}</h4>
-			<button>return</button>
+			<h1 class="computation-done">Computation Done !</h1>                
+				<h4 style="background-color: rgb(37, 33, 33); color: azure;">Final Price : {{ finale_price }}</h4>				
+				<hr>
+				<h4 style="background-color: rgb(37, 33, 33); color: azure;">taxation {{ c }}</h4>
+				<hr>
+				<h4 style="background-color: rgb(37, 33, 33); color: azure;">Vas {{ d }}</h4>
+				<hr>
+				<h4 style="background-color: rgb(37, 33, 33); color: azure;">Insurance {{ e }}</h4>
+				<hr>
+				<h4 style="background-color: rgb(37, 33, 33); color: azure;">Factor Price : {{ factor_price }}</h4>
+				<hr>
+				<button>return</button>				
 		</form>
 	</div>
 </div>

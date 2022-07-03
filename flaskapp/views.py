@@ -15,11 +15,12 @@ def index():
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
+    global factor
     
     message = f'welcome back {session.get("username")}'
     if session.get('username'):
-
-        return render_template('index.html', message=message)
+        factor = AriaKaroFactorial.query.get(1)
+        return render_template('index.html', factor=factor, message=message)
 
     else:
 
@@ -27,7 +28,9 @@ def login():
 
 @app.route('/submit', methods=['GET', 'POST'])
 def submit():
-    
+
+    global factor
+    factor = AriaKaroFactorial.query.get(1)
     if request.method == 'POST':
         
         username = request.form.get('username')
@@ -35,9 +38,9 @@ def submit():
         
         
         default_user = 'AriaKaro'
-        server_password = '1122334455'
+        server_password = '1'
         
-        response = make_response(render_template('index.html'))
+        response = make_response(render_template('index.html', factor=factor))
         session['username'] = username
         session.permanent = True
         
@@ -48,14 +51,16 @@ def submit():
             return render_template('form.html',a = a)
         
         else:
+            return response
 
-            return render_template('index.html')
 
 @app.route('/compute', methods=['POST', 'GET'])
 def compute():
- 
-    if request.method == 'POST':
 
+
+    
+    if request.method == 'POST':
+    
 
         salary_price = request.form['salary_price']
         contract_price = request.form['contract_price']
@@ -75,16 +80,16 @@ def compute():
             e = finale_price * insurance
             factor_price = c + d + e + finale_price
 
+            c = int(c)
+            d = int(d)
+            e = int(e)
+            factor_price = int(factor_price)
         else:
 
             a = "please fill the form first :)"
             return render_template('index.html', a = a)
 
-        return render_template('result.html',
-                  
-                               finale_price=finale_price, 
-                               factor_price=factor_price 
-                               )
+        return render_template('result.html', finale_price=finale_price, factor_price=factor_price, c=c, d=d, e=e)
 
     
 @app.route('/edit/<int:factor_id>', methods=['POST', 'GET'])
@@ -99,8 +104,8 @@ def edit(factor_id):
         value_added = float(request.form['value_added'])
         insurance = float(request.form['insurance'])
 
-        factor.taxation = taxation
-        factor.taxation_c = taxation_c
+        factor.taxation = taxation  
+        factor.taxation_c = taxation_c  
         factor.value_added = value_added
         factor.insurance = insurance
 
@@ -112,3 +117,11 @@ def edit(factor_id):
     
     return render_template('edit.html', factor=factor)
 
+
+@app.errorhandler(404)
+def error_404(error):
+    return render_template('error_404.html'), 404
+
+@app.errorhandler(500)
+def error_503(error):
+    return render_template('error_500.html'), 500

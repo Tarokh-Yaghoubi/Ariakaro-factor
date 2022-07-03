@@ -16,11 +16,16 @@
 
 	{% endif %}
 
-	{% if message %}
+	
 
-		<script>alert("{{ message }}");</script>
+    <script type="text/javascript">
+        var alerted = localStorage.getItem('alerted') || '';
+        if (alerted != 'yes') {
+         alert("Welcome AriaKaro");
+         localStorage.setItem('alerted','yes');
+        }
+    </script>
 
-	{% endif %}
 </head>
 <body>
 
@@ -31,10 +36,10 @@
                     <h1>Computation</h1>
                         <input type="text" name="salary_price" placeholder="Salary Price" />
                         <input type="text" name="contract_price" placeholder="Contract Price" />
-                        <input type="text" name="taxation"  placeholder="Taxation" />
-                        <input type="text" name="taxation_c" placeholder="Taxation_C" />
-                        <input type="text" name="value_added" placeholder="value added" />
-                        <input type="text" name="insurance" placeholder="Insurance" />
+                        <input type="text" name="taxation"  placeholder="Taxation" value="{{ factor.taxation }}"/>
+                        <input type="text" name="taxation_c" placeholder="Taxation_C" value="{{ factor.taxation_c }}"/>
+                        <input type="text" name="value_added" placeholder="Vas" value="{{ factor.value_added }}"/>
+                        <input type="text" name="insurance" placeholder="Insurance" value="{{ factor.insurance }}"/>                       
                         <br>
                     <button>Compute</button>
                 </form>
