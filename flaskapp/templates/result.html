@@ -8,18 +8,18 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.js') }}">
     <title>Document</title>
 </head>
-<body>
+<body style="overflow: hidden;">
 <div class="container" id="container">
 	<div class="form-container sign-in-container">
 		<form action="{{ url_for('login') }}">
 			<h1 class="computation-done">Computation Done !</h1>                
 				<h4 style="background-color: rgb(37, 33, 33); color: azure;">Final Price : {{ finale_price }}</h4>				
 				<hr>
-				<h4 style="background-color: rgb(37, 33, 33); color: azure;">taxation {{ c }}</h4>
+				<h4 style="background-color: rgb(37, 33, 33); color: azure;">taxation : {{ c }}</h4>
 				<hr>
-				<h4 style="background-color: rgb(37, 33, 33); color: azure;">Vas {{ d }}</h4>
+				<h4 style="background-color: rgb(37, 33, 33); color: azure;">Vas : {{ d }}</h4>
 				<hr>
-				<h4 style="background-color: rgb(37, 33, 33); color: azure;">Insurance {{ e }}</h4>
+				<h4 style="background-color: rgb(37, 33, 33); color: azure;">Insurance : {{ e }}</h4>
 				<hr>
 				<h4 style="background-color: rgb(37, 33, 33); color: azure;">Factor Price : {{ factor_price }}</h4>
 				<hr>

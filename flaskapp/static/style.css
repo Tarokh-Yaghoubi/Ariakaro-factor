@@ -73,14 +73,17 @@ button.ghost {
 form {
 	background-color: #cccaca;
 	display: flex;
-	align-items: center;
+	/*align-items: center;*/
 	justify-content: center;
 	flex-direction: column;
 	padding: 0 50px;
 	height: 100%;
-	text-align: center;
+	/*text-align: center;*/
 }
-
+h4 {
+    padding: 10px;
+    border-radius: 5px;
+}
 input {
 	background-color: #eee;
 	border: none;
@@ -96,9 +99,9 @@ input {
 			0 10px 10px #cccaca;
 	position: relative;
 	overflow: hidden;
-	width: 768px;
-	max-width: 100%;
-	min-height: 480px;
+	width: 900px;
+	max-width: 120%;
+	min-height: 750px;
 }
 
 .form-container {

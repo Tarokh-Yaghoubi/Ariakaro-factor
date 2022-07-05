@@ -1,7 +1,6 @@
 from flaskapp import app
 from flask import make_response
 from flaskapp.models import db, AriaKaroFactorial
-from flask_login import login_required
 
 from flask import (
     flash, render_template, request, abort, url_for, session, redirect
@@ -61,65 +60,22 @@ def compute():
 
     
     if request.method == 'POST':
+            salary_price = float(request.form.get('salary_price') if request.form.get('salary_price')!='' else 0)
+            contract_price = float(request.form.get('contract_price')  if request.form.get('contract_price')!='' else 0)
+            taxation = float(request.form.get('taxation') if request.form.get('taxation')!='' else 0)
 
-        try:
+            taxation_c = float( request.form.get('taxation_c')if request.form.get('taxation_c')!='' else 0)
+            value_added = float(request.form.get('value_added') if request.form.get('value_added')!='' else 0)
+            insurance = float(request.form.get('insurance') if request.form.get('insurance')!='' else 0)
 
-            salary_price = float(request.form.get('salary_price'))
-            contract_price = float(request.form.get('contract_price'))
-            taxation = float(request.form.get('taxation'))
-
-            taxation_c = float(request.form.get('taxation_c'))
-            value_added = float(request.form.get('value_added'))
-            insurance = float(request.form.get('insurance'))
-
-        except ValueError:
-
-            if salary_price == '' or float(0):
-
-                salary_price = float(0)
-
-            elif contract_price == '' or float(0):
-
-                contract_price = float(0)
-            
-            elif taxation == '' or float(0):
-
-                taxation = float(0)
-
-            elif taxation_c == '' or float(0):
-
-                taxation_c = float(0)
-
-            if value_added == '' or float(0):
-
-                value_added = float(0)
-
-            if insurance == '' or float(0):
-
-                insurance = float(0)
-        
-
-        if salary_price and contract_price != '':
-
-            finale_price = float(salary_price) + float(contract_price)
-
-
-
-            c = (finale_price * taxation) *  taxation_c
-            d = finale_price * value_added
-            e = finale_price * insurance
-            factor_price = c + d + e + finale_price
-
-            c = float(c)
-            d = float(d)
-            e = float(e)
-            factor_price = float(factor_price)
-        else:
-
-            a = "please fill the form first :)"
-            return render_template('index.html', a = a)
-
-        return render_template('result.html', finale_price=finale_price, factor_price=factor_price, c=c, d=d, e=e)
+            final_price = salary_price+ contract_price
+            c = (final_price * taxation) * taxation_c
+            d = final_price * value_added
+            e = final_price * insurance
+            factor_price = c + d + e + final_price
+            #a = "please fill the form first :)"
+            #return render_template('index.html', a = a)
+            return render_template('result.html', finale_price=int(final_price), factor_price=int(factor_price), c=int(c), d=int(d), e=int(e))
 
     
 @app.route('/edit/<float:factor_id>', methods=['POST', 'GET'])
